@@ -632,28 +632,15 @@
         @media (max-width: 992px) {
             .main-nav ul {
                 display: none; /* Hide navigation for smaller screens */
-                flex-direction: column; /* Ensure it stacks when shown */
-                width: 100%;
-                position: absolute;
-                top: 75px; /* Adjust based on header height */
-                left: 0;
-                padding: 10px 0;
-                background-color: var(--dark-color);
-                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-            }
-
-            .main-nav ul.active { /* Target the UL directly when active */
-                display: flex;
             }
 
             .header .container {
-                flex-direction: row; /* Keep logo and toggle on one row */
-                justify-content: space-between;
-                align-items: center;
+                flex-direction: column;
+                text-align: center;
             }
 
             .logo {
-                margin-bottom: 0; /* Reset margin */
+                margin-bottom: 15px;
             }
 
             .hero h1 {
@@ -688,19 +675,33 @@
                 color: #fff;
                 font-size: 2rem;
                 cursor: pointer;
-                /* No longer absolute, part of flex row */
+                position: absolute;
+                right: 20px;
+                top: 25px;
             }
 
-            .main-nav ul.active li {
+            .main-nav.active ul {
+                display: flex;
+                flex-direction: column;
+                background-color: var(--dark-color);
+                width: 100%;
+                position: absolute;
+                top: 75px; /* Adjust based on header height */
+                left: 0;
+                padding: 10px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            }
+
+            .main-nav.active ul li {
                 margin: 0;
                 border-bottom: 1px solid rgba(255,255,255,0.1);
             }
 
-            .main-nav ul.active li:last-child {
+            .main-nav.active ul li:last-child {
                 border-bottom: none;
             }
 
-            .main-nav ul.active li a {
+            .main-nav.active ul li a {
                 padding: 15px 20px;
                 display: block;
                 text-align: center;
@@ -717,7 +718,7 @@
                 display: none; /* Hide initially for mobile */
             }
 
-            .dropdown.active .dropdown-content { /* Show dropdown for mobile when parent is active */
+            .dropdown:hover .dropdown-content {
                 display: block;
             }
 
@@ -794,7 +795,7 @@
             <div class="hero-content">
                 <h1>The Paladar</h1>
                 <p>Experience Culinary Excellence in a Sophisticated Ambiance</p>
-                <a href="#contact" class="btn">MAKE A RESERVATION</a>
+                <a href="#reservations" class="btn">MAKE A RESERVATION</a>
             </div>
         </section>
 
@@ -827,25 +828,25 @@
 
                 <div id="appetizers" class="menu-category active">
                     <div class="menu-item">
-                        <img src="https://source.unsplash.com/300x200/?arancini-balls,food" alt="Truffle Arancini">
+                        
                         <h3>Truffle Arancini</h3>
                         <p>Crispy risotto balls filled with truffle, mozzarella, and served with marinara.</p>
                         <span class="price">$14</span>
                     </div>
                     <div class="menu-item">
-                        <img src="https://source.unsplash.com/300x200/?seared-scallops,food" alt="Seared Scallops">
+                        
                         <h3>Seared Scallops</h3>
                         <p>Pan-seared scallops with saffron risotto and asparagus tips.</p>
                         <span class="price">$22</span>
                     </div>
                     <div class="menu-item">
-                        <img src="https://source.unsplash.com/300x200/?caprese-skewers,food" alt="Caprese Skewers">
+                        
                         <h3>Caprese Skewers</h3>
                         <p>Fresh mozzarella, cherry tomatoes, and basil drizzled with balsamic glaze.</p>
                         <span class="price">$12</span>
                     </div>
                     <div class="menu-item">
-                        <img src="https://source.unsplash.com/300x200/?oysters,food" alt="Oysters on the Half Shell">
+                        
                         <h3>Oysters on the Half Shell</h3>
                         <p>Seasonal oysters with mignonette and fresh lemon.</p>
                         <span class="price">$18</span>
@@ -854,25 +855,25 @@
 
                 <div id="main-courses" class="menu-category">
                     <div class="menu-item">
-                        <img src="https://source.unsplash.com/300x200/?filet-mignon,steak" alt="Filet Mignon">
+                        
                         <h3>Filet Mignon</h3>
                         <p>8oz prime beef filet, potato gratin, seasonal vegetables, red wine reduction.</p>
                         <span class="price">$42</span>
                     </div>
                     <div class="menu-item">
-                        <img src="https://source.unsplash.com/300x200/?pan-seared-salmon,fish" alt="Pan-Seared Salmon">
+                        
                         <h3>Pan-Seared Salmon</h3>
                         <p>Wild-caught salmon with lemon-dill sauce, quinoa, and roasted root vegetables.</p>
                         <span class="price">$35</span>
                     </div>
                     <div class="menu-item">
-                        <img src="https://source.unsplash.com/300x200/?lobster-ravioli,pasta" alt="Lobster Ravioli">
+                        
                         <h3>Lobster Ravioli</h3>
                         <p>Homemade ravioli filled with fresh lobster, served in a rich bisque sauce.</p>
                         <span class="price">$38</span>
                     </div>
                     <div class="menu-item">
-                        <img src="https://source.unsplash.com/300x200/?vegetarian-lasagna,pasta" alt="Vegetarian Lasagna">
+                        
                         <h3>Vegetarian Lasagna</h3>
                         <p>Layers of fresh pasta, seasonal vegetables, ricotta, and rich tomato sauce.</p>
                         <span class="price">$28</span>
@@ -881,25 +882,25 @@
 
                 <div id="desserts" class="menu-category">
                     <div class="menu-item">
-                        <img src="https://source.unsplash.com/300x200/?chocolate-lava-cake,dessert" alt="Chocolate Lava Cake">
+                        
                         <h3>Chocolate Lava Cake</h3>
                         <p>Warm molten chocolate cake with vanilla bean ice cream and raspberry coulis.</p>
                         <span class="price">$12</span>
                     </div>
                     <div class="menu-item">
-                        <img src="https://source.unsplash.com/300x200/?tiramisu,dessert" alt="Tiramisu">
+                        
                         <h3>Tiramisu</h3>
                         <p>Classic Italian dessert with layers of coffee-soaked ladyfingers and mascarpone cream.</p>
                         <span class="price">$10</span>
                     </div>
                     <div class="menu-item">
-                        <img src="https://source.unsplash.com/300x200/?creme-brulee,dessert" alt="Crème Brûlée">
+                        
                         <h3>Crème Brûlée</h3>
                         <p>Rich vanilla custard with a caramelized sugar topping.</p>
                         <span class="price">$11</span>
                     </div>
                     <div class="menu-item">
-                        <img src="https://source.unsplash.com/300x200/?berry-tart,dessert" alt="Seasonal Berry Tart">
+                        
                         <h3>Seasonal Berry Tart</h3>
                         <p>Fresh berries nestled in a flaky pastry crust with a light diplomat cream.</p>
                         <span class="price">$13</span>
@@ -908,23 +909,100 @@
 
                 <div id="drinks" class="menu-category">
                     <div class="menu-item">
-                        <img src="https://source.unsplash.com/300x200/?espresso-martini,cocktail" alt="Espresso Martini">
+                        
                         <h3>Espresso Martini</h3>
                         <p>Vodka, coffee liqueur, freshly brewed espresso, and a hint of vanilla.</p>
                         <span class="price">$15</span>
                     </div>
                     <div class="menu-item">
-                        <img src="https://source.unsplash.com/300x200/?old-fashioned-cocktail" alt="Signature Old Fashioned">
+                        
                         <h3>Signature Old Fashioned</h3>
                         <p>Bourbon, angostura bitters, sugar, and an orange peel, expertly crafted.</p>
                         <span class="price">$16</span>
                     </div>
                     <div class="menu-item">
-                        <img src="https://source.unsplash.com/300x200/?sparkling-rose,wine" alt="Sparkling Rosé">
+                        
                         <h3>Sparkling Rosé</h3>
                         <p>A crisp and refreshing glass of our finest sparkling rosé from Provence.</p>
                         <span class="price">$14</span>
                     </div>
                     <div class="menu-item">
-                        <img src="https://source.unsplash.com/300x200/?artisanal-lemonade,drink" alt="Artisanal Lemonade">
-                        <h3>Artisanal Lemon
+                        
+                        <h3>Artisanal Lemonade</h3>
+                        <p>Freshly squeezed lemon juice, natural sweeteners, and a hint of mint.</p>
+                        <span class="price">$7</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery">
+            <div class="container">
+                <h2>Moments at The Paladar</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        
+                    </div>
+                    <div class="gallery-item">
+                        
+                    </div>
+                    <div class="gallery-item">
+                        
+                    </div>
+                    <div class="gallery-item">
+                        
+                    </div>
+                    <div class="gallery-item">
+                        
+                    </div>
+                    <div class="gallery-item">
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team">
+            <div class="container">
+                <h2>Meet Our Culinary Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        
+                        <h3>Chef Isabella Rossi</h3>
+                        <p>Head Chef & Founder</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        
+                        <h3>Chef Marco Bianchi</h3>
+                        <p>Sous Chef</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        
+                        <h3>Sommelier Sofia Vega</h3>
+                        <p>Head Sommelier</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        
+                        <h3>Pastry Chef Elena Ricci</h3>
+                        <p>Pastry Chef</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="

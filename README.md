@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Paladar - Exquisite Dining</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        :root {
+            --primary-color: #A0522D; /* Sienna */
+            --secondary-color: #FDF5E6; /* Old Lace */
+            --dark-color: #2c3e50; /* Darker Slate */
+            --light-color: #ecf0f1; /* Light Gray */
+            --text-color: #333;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Open Sans', sans-serif;
+            --font-accent: 'Great Vibes', cursive;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: #8B4513; /* Darker Sienna */
+        }
+
+        section {
+            padding: 80px 0;
+            overflow: hidden; /* Clear floats */
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--dark-color);
+            color: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-accent);
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-weight: normal;
+        }
+
+        .main-nav ul {
+            display: flex;
+        }
+
+        .main-nav ul li {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        .main-nav ul li a {
+            color: #fff;
+            font-weight: 600;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .main-nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .main-nav ul li a:hover::after,
+        .main-nav ul li a.active::after {
+            width: 100%;
+        }
+
+        .main-nav ul li a:hover,
+        .main-nav ul li a.active {
+            color: var(--primary-color);
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--dark-color);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            padding: 10px 0;
+            border-radius: 5px;
+            top: 100%;
+            left: 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .dropdown-content a {
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--primary-color);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            background: url('https://source.unsplash.com/1600x900/?restaurant-fine-dining-interior') no-repeat center center/cover;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-accent);
+            font-size: 5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero p {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--light-color);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--light-color);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-family: var(--font-accent);
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Menu Section */
+        #menu {
+            background-color: var(--secondary-color);
+        }
+
+        .menu-tabs {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .menu-tabs button {
+            background-color: transparent;
+            border: none;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            cursor: pointer;
+            color: var(--dark-color);
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            margin: 0 10px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .menu-tabs button.active,
+        .menu-tabs button:hover {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .menu-category {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+            /* Initially hidden */
+            display: none;
+        }
+
+        .menu-category.active {
+            display: grid; /* Show when active */
+        }
+
+
+        .menu-item {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .menu-item img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .menu-item h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .menu-item p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .menu-item .price {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        /* Gallery Section */
+        #gallery {
+            background-color: var(--light-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item::after {
+            content: '\f002'; /* magnifying glass icon */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover::after {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        /* Team Section */
+        #team {
+            background-color: var(--secondary-color);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .team-member {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(160, 82, 45, 0.3);
+        }
+
+        .team-member h3 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+
+        .team-member p {
+            font-family: var(--font-accent);
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            color: var(--dark-color);
+            font-size: 1.2rem;
+            margin: 0 8px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--dark-color);
+            color: #fff;
+            text-align: center;
+        }
+
+        #contact h2 {
+            color: var(--secondary-color);
+        }
+
+        #contact h2::after {
+            background-color: var(--secondary-color);
+        }
+
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-info, .contact-form-wrapper {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .contact-info p i {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+
+        .contact-form {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            text-align: left;
+        }
+
+        .contact-form h3 {
+            color: var(--dark-color);
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input[type="text"]:focus,
+        .contact-form input[type="email"]:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer p {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-nav ul {
+                display: none; /* Hide navigation for smaller screens */
+            }
+
+            .header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .hero p {
+                font-size: 1.3rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-image {
+                margin-top: 30px;
+            }
+
+            .contact-content {
+                flex-direction: column;
+            }
+
+            .contact-info, .contact-form-wrapper {
+                min-width: unset;
+                max-width: 100%;
+            }
+
+            /* Mobile Menu Button */
+            .menu-toggle {
+                display: block; /* Show menu toggle button */
+                color: #fff;
+                font-size: 2rem;
+                cursor: pointer;
+                position: absolute;
+                right: 20px;
+                top: 25px;
+            }
+
+            .main-nav.active ul {
+                display: flex;
+                flex-direction: column;
+                background-color: var(--dark-color);
+                width: 100%;
+                position: absolute;
+                top: 75px; /* Adjust based on header height */
+                left: 0;
+                padding: 10px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            }
+
+            .main-nav.active ul li {
+                margin: 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .main-nav.active ul li:last-child {
+                border-bottom: none;
+            }
+
+            .main-nav.active ul li a {
+                padding: 15px 20px;
+                display: block;
+                text-align: center;
+            }
+
+            .dropdown-content {
+                position: static; /* Make dropdown full width */
+                width: 100%;
+                box-shadow: none;
+                background-color: rgba(0,0,0,0.2);
+                padding: 0;
+                opacity: 1;
+                transform: translateY(0);
+                display: none; /* Hide initially for mobile */
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+            .dropdown-content a {
+                padding-left: 40px; /* Indent dropdown items */
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">The Paladar</div>
+            <nav class="main-nav">
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul>
+                    <li><a href="#home" class="active">HOME</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#menu">MENU</a></li>
+                    <li class="dropdown">
+                        <a href="#gallery">GALLERY <i class="fas fa-caret-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#gallery">Food</a>
+                            <a href="#gallery">Restaurant</a>
+                        </div>
+                    </li>
+                    <li><a href="#team">TEAM</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>The Paladar</h1>
+                <p>Experience Culinary Excellence in a Sophisticated Ambiance</p>
+                <a href="#reservations" class="btn">MAKE A RESERVATION</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container about-content">
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <h3>A Taste of Passion and Tradition</h3>
+                    <p>Welcome to The Paladar, where every dish tells a story of passion, tradition, and culinary innovation. Founded by Chef Isabella Rossi, our restaurant is a celebration of exquisite flavors, locally sourced ingredients, and a dining experience designed to delight all your senses.</p>
+                    <p>From our humble beginnings, we've grown into a beloved culinary destination, renowned for our commitment to quality and our unique fusion of classic techniques with modern twists. Join us for an unforgettable journey through taste.</p>
+                    <a href="#menu" class="btn">EXPLORE MENU</a>
+                </div>
+                <div class="about-image">
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu">
+            <div class="container">
+                <h2>Our Delicious Menu</h2>
+                <div class="menu-tabs">
+                    <button class="tab-button active" data-category="appetizers">Appetizers</button>
+                    <button class="tab-button" data-category="main-courses">Main Courses</button>
+                    <button class="tab-button" data-category="desserts">Desserts</button>
+                    <button class="tab-button" data-category="drinks">Drinks</button>
+                </div>
+
+                <div id="appetizers" class="menu-category active">
+                    <div class="menu-item">
+                        
+                        <h3>Truffle Arancini</h3>
+                        <p>Crispy risotto balls filled with truffle, mozzarella, and served with marinara.</p>
+                        <span class="price">$14</span>
+                    </div>
+                    <div class="menu-item">
+                        
+                        <h3>Seared Scallops</h3>
+                        <p>Pan-seared scallops with saffron risotto and asparagus tips.</p>
+                        <span class="price">$22</span>
+                    </div>
+                    <div class="menu-item">
+                        
+                        <h3>Caprese Skewers</h3>
+                        <p>Fresh mozzarella, cherry tomatoes, and basil drizzled with balsamic glaze.</p>
+                        <span class="price">$12</span>
+                    </div>
+                    <div class="menu-item">
+                        
+                        <h3>Oysters on the Half Shell</h3>
+                        <p>Seasonal oysters with mignonette and fresh lemon.</p>
+                        <span class="price">$18</span>
+                    </div>
+                </div>
+
+                <div id="main-courses" class="menu-category">
+                    <div class="menu-item">
+                        
+                        <h3>Filet Mignon</h3>
+                        <p>8oz prime beef filet, potato gratin, seasonal vegetables, red wine reduction.</p>
+                        <span class="price">$42</span>
+                    </div>
+                    <div class="menu-item">
+                        
+                        <h3>Pan-Seared Salmon</h3>
+                        <p>Wild-caught salmon with lemon-dill sauce, quinoa, and roasted root vegetables.</p>
+                        <span class="price">$35</span>
+                    </div>
+                    <div class="menu-item">
+                        
+                        <h3>Lobster Ravioli</h3>
+                        <p>Homemade ravioli filled with fresh lobster, served in a rich bisque sauce.</p>
+                        <span class="price">$38</span>
+                    </div>
+                    <div class="menu-item">
+                        
+                        <h3>Vegetarian Lasagna</h3>
+                        <p>Layers of fresh pasta, seasonal vegetables, ricotta, and rich tomato sauce.</p>
+                        <span class="price">$28</span>
+                    </div>
+                </div>
+
+                <div id="desserts" class="menu-category">
+                    <div class="menu-item">
+                        
+                        <h3>Chocolate Lava Cake</h3>
+                        <p>Warm molten chocolate cake with vanilla bean ice cream and raspberry coulis.</p>
+                        <span class="price">$12</span>
+                    </div>
+                    <div class="menu-item">
+                        
+                        <h3>Tiramisu</h3>
+                        <p>Classic Italian dessert with layers of coffee-soaked ladyfingers and mascarpone cream.</p>
+                        <span class="price">$10</span>
+                    </div>
+                    <div class="menu-item">
+                        
+                        <h3>Crème Brûlée</h3>
+                        <p>Rich vanilla custard with a caramelized sugar topping.</p>
+                        <span class="price">$11</span>
+                    </div>
+                    <div class="menu-item">
+                        
+                        <h3>Seasonal Berry Tart</h3>
+                        <p>Fresh berries nestled in a flaky pastry crust with a light diplomat cream.</p>
+                        <span class="price">$13</span>
+                    </div>
+                </div>
+
+                <div id="drinks" class="menu-category">
+                    <div class="menu-item">
+                        
+                        <h3>Espresso Martini</h3>
+                        <p>Vodka, coffee liqueur, freshly brewed espresso, and a hint of vanilla.</p>
+                        <span class="price">$15</span>
+                    </div>
+                    <div class="menu-item">
+                        
+                        <h3>Signature Old Fashioned</h3>
+                        <p>Bourbon, angostura bitters, sugar, and an orange peel, expertly crafted.</p>
+                        <span class="price">$16</span>
+                    </div>
+                    <div class="menu-item">
+                        
+                        <h3>Sparkling Rosé</h3>
+                        <p>A crisp and refreshing glass of our finest sparkling rosé from Provence.</p>
+                        <span class="price">$14</span>
+                    </div>
+                    <div class="menu-item">
+                        
+                        <h3>Artisanal Lemonade</h3>
+                        <p>Freshly squeezed lemon juice, natural sweeteners, and a hint of mint.</p>
+                        <span class="price">$7</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery">
+            <div class="container">
+                <h2>Moments at The Paladar</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        
+                    </div>
+                    <div class="gallery-item">
+                        
+                    </div>
+                    <div class="gallery-item">
+                        
+                    </div>
+                    <div class="gallery-item">
+                        
+                    </div>
+                    <div class="gallery-item">
+                        
+                    </div>
+                    <div class="gallery-item">
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team">
+            <div class="container">
+                <h2>Meet Our Culinary Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        
+                        <h3>Chef Isabella Rossi</h3>
+                        <p>Head Chef & Founder</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        
+                        <h3>Chef Marco Bianchi</h3>
+                        <p>Sous Chef</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        
+                        <h3>Sommelier Sofia Vega</h3>
+                        <p>Head Sommelier</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        
+                        <h3>Pastry Chef Elena Ricci</h3>
+                        <p>Pastry Chef</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="

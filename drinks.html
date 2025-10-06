@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Paladar - Drinks</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        :root {
+            --primary-color: #A0522D; /* Sienna */
+            --secondary-color: #FDF5E6; /* Old Lace */
+            --dark-color: #2c3e50; /* Darker Slate */
+            --light-color: #ecf0f1; /* Light Gray */
+            --text-color: #333;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Open Sans', sans-serif;
+            --font-accent: 'Great Vibes', cursive;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header & Navigation */
+        .navbar {
+            background: var(--dark-color);
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .navbar .logo {
+            font-family: var(--font-accent);
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .navbar .logo a {
+            color: var(--secondary-color);
+        }
+
+        .navbar .nav-links {
+            display: flex;
+        }
+
+        .navbar .nav-links li {
+            margin-left: 30px;
+        }
+
+        .navbar .nav-links a {
+            color: var(--light-color);
+            font-weight: 600;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .navbar .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover::after,
+        .navbar .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .navbar .nav-links a:hover,
+        .navbar .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-color);
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/1600x600/2c3e50/FDF5E6?text=Our+Drink+Menu') center center/cover no-repeat;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-accent);
+            font-size: 4rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--light-color);
+        }
+
+        /* Menu Section - Drinks */
+        .menu-section {
+            padding: 60px 0;
+            background-color: var(--secondary-color);
+        }
+
+        .menu-section h2 {
+            text-align: center;
+            font-size: 3rem;
+            color: var(--dark-color);
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .menu-section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .menu-item {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .menu-item-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .menu-item-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .menu-item h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .menu-item-description {
+            font-size: 1rem;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .menu-item-price {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            font-weight: 700;
+            text-align: right;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-color);
+            color: var(--light-color);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer .social-icons a {
+            color: var(--light-color);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer p {
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: var(--dark-color);
+                position: absolute;
+                top: 70px; /* Adjust based on navbar height */
+                left: 0;
+                padding: 1rem 0;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            }
+
+            .navbar .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .nav-links li {
+                margin: 10px 20px;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr; /* Single column on smaller screens */
+            }
+
+            .menu-section h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html">The Paladar</a></h1>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <nav class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#menu">Menu</a></li>
+                <li><a href="main-courses.html">Main Courses</a></li>
+                <li><a href="desserts.html">Desserts</a></li>
+                <li><a href="#" class="active">Drinks</a></li> <!-- Current page active -->
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="reservations.html">Reservations</a></li>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Refresh & Indulge: Our Drink Selection</h1>
+                <p>From handcrafted cocktails to fine wines and artisanal coffees, find your perfect sip at The Paladar.</p>
+            </div>
+        </section>
+
+        <section id="drinks" class="menu-section">
+            <div class="container">
+                <h2>Our Exquisite Drinks</h2>
+                <div class="menu-grid">
+                    <!-- Drink Item 1: Signature Cocktail -->
+                    <div class="menu-item">
+                        <img src="https://via.placeholder.com/400x220/A0522D/FDF5E6?text=Paladar+Spritz" alt="Paladar Spritz Cocktail" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <div>
+                                <h3>Paladar Spritz</h3>
+                                <p class="menu-item-description">Our signature blend of elderflower liqueur, prosecco, a splash of soda, and fresh berries.</p>
+                            </div>
+                            <span class="menu-item-price">$14.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Drink Item 2: Red Wine -->
+                    <div class="menu-item">
+                        <img src="https://via.placeholder.com/400x220/A0522D/FDF5E6?text=Cabernet+Sauvignon" alt="Cabernet Sauvignon Wine" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <div>
+                                <h3>Cabernet Sauvignon (Glass)</h3>
+                                <p class="menu-item-description">Full-bodied and rich, with notes of blackcurrant and cedar. Napa Valley, 2019.</p>
+                            </div>
+                            <span class="menu-item-price">$16.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Drink Item 3: White Wine -->
+                    <div class="menu-item">
+                        <img src="https://via.placeholder.com/400x220/A0522D/FDF5E6?text=Chardonnay" alt="Chardonnay Wine" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <div>
+                                <h3>Chardonnay (Glass)</h3>
+                                <p class="menu-item-description">Crisp and elegant, with hints of green apple and citrus. Sonoma Coast, 2021.</p>
+                            </div>
+                            <span class="menu-item-price">$15.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Drink Item 4: Craft Beer -->
+                    <div class="menu-item">
+                        <img src="https://via.placeholder.com/400x220/A0522D/FDF5E6?text=Craft+IPA" alt="Craft IPA Beer" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <div>
+                                <h3>Local Craft IPA</h3>
+                                <p class="menu-item-description">Hoppy and refreshing, brewed locally with a citrusy finish. Ask for today's selection.</p>
+                            </div>
+                            <span class="menu-item-price">$9.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Drink Item 5: Fresh Juice -->
+                    <div class="menu-item">
+                        <img src="https://via.placeholder.com/400x220/A0522D/FDF5E6?text=Fresh+Orange+Juice" alt="Fresh Orange Juice" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <div>
+                                <h3>Freshly Squeezed Orange Juice</h3>
+                                <p class="menu-item-description">Made to order with ripe, juicy oranges for a burst of natural flavor.</p>
+                            </div>
+                            <span class="menu-item-price">$7.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Drink Item 6: Espresso -->
+                    <div class="menu-item">
+                        <img src="https://via.placeholder.com/400x220/A0522D/FDF5E6?text=Espresso" alt="Espresso Coffee" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <div>
+                                <h3>Artisanal Espresso</h3>
+                                <p class="menu-item-description">Rich and intense, a perfect shot of our premium coffee blend.</p>
+                            </div>
+                            <span class="menu-item-price">$5.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2023 The Paladar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for responsive navigation
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active'); // Optional: Add a class to animate the menu icon
+        });
+
+        // Close menu when a link is clicked (for single-page navigation or if desired)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Highlight active link based on current page/section
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPath = window.location.pathname.split('/').pop(); // Get filename
+            const navLinksList = document.querySelectorAll('.nav-links a');
+
+            navLinksList.forEach(link => {
+                if (link.getAttribute('href').startsWith('#')) {
+                    // This specific page only has external links in its nav
+                } else if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

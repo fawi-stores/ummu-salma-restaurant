@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -294,90 +295,121 @@
             transform: scale(1.03);
         }
 
-        /* Menu Section */
+        /* Menu Section (Updated) */
         #menu {
             background-color: var(--secondary-color);
         }
 
         .menu-tabs {
-            text-align: center;
+            display: flex;
+            justify-content: center;
             margin-bottom: 40px;
+            flex-wrap: wrap; /* Allow tabs to wrap on smaller screens */
         }
 
-        .menu-tabs button {
-            background-color: transparent;
+        .tab-button {
+            background: none;
             border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
             font-family: var(--font-heading);
             font-size: 1.2rem;
-            padding: 10px 20px;
+            color: var(--text-color);
             cursor: pointer;
-            color: var(--dark-color);
-            transition: color 0.3s ease, border-bottom 0.3s ease;
-            margin: 0 10px;
-            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden; /* For the underline effect */
         }
 
-        .menu-tabs button.active,
-        .menu-tabs button:hover {
+        .tab-button::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-out;
+        }
+
+        .tab-button:hover::after,
+        .tab-button.active::after {
+            transform: translateX(0%);
+        }
+
+        .tab-button:hover {
             color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .tab-button.active {
+            color: var(--primary-color);
+            font-weight: 700;
         }
 
         .menu-category {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-            /* Initially hidden */
-            display: none;
+            display: none; /* Hide all categories by default */
+            padding: 20px 0;
+            animation: fadeIn 0.5s ease-in-out; /* Optional: Add a fade-in effect */
         }
 
         .menu-category.active {
-            display: grid; /* Show when active */
+            display: grid; /* Show the active category (using grid for menu items) */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
+        /* Keyframe for fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         .menu-item {
-            background-color: #fff;
+            background-color: var(--light-color); /* Changed from #fff for consistency */
             padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-radius: 8px; /* Changed from 10px */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Adjusted shadow */
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 5px solid var(--primary-color);
+            border-top: 5px solid var(--primary-color); /* Retained */
         }
 
         .menu-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Adjusted hover shadow */
         }
 
         .menu-item img {
             max-width: 100%;
-            height: 200px;
+            height: 200px; /* Fixed height for consistency */
             object-fit: cover;
-            border-radius: 5px;
+            border-radius: 6px; /* Adjusted radius */
             margin-bottom: 15px;
+            border: 1px solid var(--primary-color); /* Added border */
         }
 
         .menu-item h3 {
             font-size: 1.8rem;
-            color: var(--primary-color);
+            color: var(--dark-color); /* Changed to dark-color */
             margin-bottom: 10px;
         }
 
         .menu-item p {
-            font-size: 0.95rem;
-            color: #666;
+            font-size: 1rem; /* Adjusted from 0.95rem */
+            color: var(--text-color); /* Changed from #666 */
+            line-height: 1.6;
             margin-bottom: 15px;
         }
 
         .menu-item .price {
-            font-family: var(--font-heading);
-            font-size: 1.4rem;
+            font-family: var(--font-accent); /* Changed to accent font */
+            font-size: 2rem; /* Adjusted size */
             font-weight: 700;
-            color: var(--dark-color);
+            color: var(--primary-color); /* Changed to primary color */
+            letter-spacing: 1px; /* Added letter spacing */
         }
+
 
         /* Gallery Section */
         #gallery {
@@ -764,30 +796,24 @@
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="logo">The Paladar</div>
-            <nav class="main-nav">
-                <div class="menu-toggle" id="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul>
-                    <li><a href="#home" class="active">HOME</a></li>
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#menu">MENU</a></li>
-                    <li class="dropdown">
-                        <a href="#gallery">GALLERY <i class="fas fa-caret-down"></i></a>
-                        <div class="dropdown-content">
-                            <a href="#gallery">Food</a>
-                            <a href="#gallery">Restaurant</a>
-                        </div>
-                    </li>
-                    <li><a href="#team">TEAM</a></li>
-                    <li><a href="#contact">CONTACT</a></li>
-                </ul>
-            </nav>
+    <header class="navbar">
+    <div class="container">
+        <h1 class="logo"><a href="index.html">The Paladar</a></h1>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
         </div>
-    </header>
+        <nav class="nav-links">
+            <li><a href="#hero" class="active">Home</a></li> <!-- Use #hero or #top for home link -->
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="main-courses.html">Main Courses</a></li> <!-- Link to your new page -->
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#reservations">Reservations</a></li>
+        </nav>
+    </div>
+</header>
 
     <main>
         <!-- Hero Section -->
@@ -810,7 +836,7 @@
                     <a href="#menu" class="btn">EXPLORE MENU</a>
                 </div>
                 <div class="about-image">
-                    
+                    <img src="YOUR_ABOUT_IMAGE.jpg" alt="Chef Ummu Salma preparing a dish">
                 </div>
             </div>
         </section>
@@ -828,25 +854,25 @@
 
                 <div id="appetizers" class="menu-category active">
                     <div class="menu-item">
-                        <img src="https://tse2.mm.bing.net/th/id/OIP.x0wFAobNJzkXKitVcdY_6QHaEa?cb=12&w=800&h=476&rs=1&pid=ImgDetMain&o=7&rm=3">
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.x0wFAobNJzkXKitVcdY_6QHaEa?cb=12&w=800&h=476&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Truffle Arancini">
                         <h3>Truffle Arancini</h3>
                         <p>Crispy risotto balls filled with truffle, mozzarella, and served with marinara.</p>
                         <span class="price">$14</span>
                     </div>
                     <div class="menu-item">
-                        <img src="https://tse3.mm.bing.net/th/id/OIP.Y8ZfXcPGy1C_cRnvxQpKUwAAAA?cb=12&w=474&h=266&rs=1&pid=ImgDetMain&o=7&rm=3">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.Y8ZfXcPGy1C_cRnvxQpKUwAAAA?cb=12&w=474&h=266&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Seared Scallops">
                         <h3>Seared Scallops</h3>
                         <p>Pan-seared scallops with saffron risotto and asparagus tips.</p>
                         <span class="price">$22</span>
                     </div>
                     <div class="menu-item">
-                        <img src="https://images.squarespace-cdn.com/content/v1/5b43f4305417fcfefd4f3ddd/1580845947477-E3YALPQJ2XPMIZN3QQJ6/IMG_2301.jpg">
+                        <img src="https://images.squarespace-cdn.com/content/v1/5b43f4305417fcfefd4f3ddd/1580845947477-E3YALPQJ2XPMIZN3QQJ6/IMG_2301.jpg" alt="Caprese Skewers">
                         <h3>Caprese Skewers</h3>
                         <p>Fresh mozzarella, cherry tomatoes, and basil drizzled with balsamic glaze.</p>
                         <span class="price">$12</span>
                     </div>
                     <div class="menu-item">
-                        <img src="https://c8.alamy.com/comp/S0H0F2/raw-oysters-on-the-half-shell-platter-S0H0F2.jpg">
+                        <img src="https://c8.alamy.com/comp/S0H0F2/raw-oysters-on-the-half-shell-platter-S0H0F2.jpg" alt="Oysters on the Half Shell">
                         <h3>Oysters on the Half Shell</h3>
                         <p>Seasonal oysters with mignonette and fresh lemon.</p>
                         <span class="price">$18</span>
@@ -855,82 +881,28 @@
 
                 <div id="main-courses" class="menu-category">
                     <div class="menu-item">
-                        
+                        <img src="https://image.pmc.com/wp-content/uploads/2023/07/How-to-Cook-Filet-Mignon.jpg?w=1024" alt="Filet Mignon">
                         <h3>Filet Mignon</h3>
                         <p>8oz prime beef filet, potato gratin, seasonal vegetables, red wine reduction.</p>
                         <span class="price">$42</span>
                     </div>
                     <div class="menu-item">
-                        
+                        <img src="https://www.allrecipes.com/thmb/bV7nKx6d8m75j_1pWdD9-FmQ9b4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/228187-pan-seared-salmon-ii-ddmfs-3x4-0847-f49553f193f946ed8c887e07b233a762.jpg" alt="Pan-Seared Salmon">
                         <h3>Pan-Seared Salmon</h3>
                         <p>Wild-caught salmon with lemon-dill sauce, quinoa, and roasted root vegetables.</p>
                         <span class="price">$35</span>
                     </div>
                     <div class="menu-item">
-                        
+                        <img src="https://www.foodandwine.com/thmb/gYkYxIeG62xK41wR-mX6hB8t808=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/lobster-ravioli-in-tomato-cream-sauce-FT-RECIPE0522-26123e42f6ae4526839d332d7877e69c.jpg" alt="Lobster Ravioli">
                         <h3>Lobster Ravioli</h3>
                         <p>Homemade ravioli filled with fresh lobster, served in a rich bisque sauce.</p>
                         <span class="price">$38</span>
                     </div>
                     <div class="menu-item">
-                        
+                        <img src="https://www.budgetbytes.com/wp-content/uploads/2022/07/Vegetarian-Lasagna-plate.jpg" alt="Vegetarian Lasagna">
                         <h3>Vegetarian Lasagna</h3>
                         <p>Layers of fresh pasta, seasonal vegetables, ricotta, and rich tomato sauce.</p>
                         <span class="price">$28</span>
-                    </div>
-                </div>
-
-                <div id="desserts" class="menu-category">
-                    <div class="menu-item">
-                        
-                        <h3>Chocolate Lava Cake</h3>
-                        <p>Warm molten chocolate cake with vanilla bean ice cream and raspberry coulis.</p>
-                        <span class="price">$12</span>
-                    </div>
-                    <div class="menu-item">
-                        
-                        <h3>Tiramisu</h3>
-                        <p>Classic Italian dessert with layers of coffee-soaked ladyfingers and mascarpone cream.</p>
-                        <span class="price">$10</span>
-                    </div>
-                    <div class="menu-item">
-                        
-                        <h3>Crème Brûlée</h3>
-                        <p>Rich vanilla custard with a caramelized sugar topping.</p>
-                        <span class="price">$11</span>
-                    </div>
-                    <div class="menu-item">
-                        
-                        <h3>Seasonal Berry Tart</h3>
-                        <p>Fresh berries nestled in a flaky pastry crust with a light diplomat cream.</p>
-                        <span class="price">$13</span>
-                    </div>
-                </div>
-
-                <div id="drinks" class="menu-category">
-                    <div class="menu-item">
-                        
-                        <h3>Espresso Martini</h3>
-                        <p>Vodka, coffee liqueur, freshly brewed espresso, and a hint of vanilla.</p>
-                        <span class="price">$15</span>
-                    </div>
-                    <div class="menu-item">
-                        
-                        <h3>Signature Old Fashioned</h3>
-                        <p>Bourbon, angostura bitters, sugar, and an orange peel, expertly crafted.</p>
-                        <span class="price">$16</span>
-                    </div>
-                    <div class="menu-item">
-                        
-                        <h3>Sparkling Rosé</h3>
-                        <p>A crisp and refreshing glass of our finest sparkling rosé from Provence.</p>
-                        <span class="price">$14</span>
-                    </div>
-                    <div class="menu-item">
-                        
-                        <h3>Artisanal Lemonade</h3>
-                        <p>Freshly squeezed lemon juice, natural sweeteners, and a hint of mint.</p>
-                        <span class="price">$7</span>
                     </div>
                 </div>
             </div>
@@ -1006,3 +978,60 @@
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
                             <a href="#"><i class="
+<footer class="footer">
+            <div class="container">
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+                <p>&copy; 2023 The Paladar. All rights reserved.</p>
+            </div>
+        </footer>
+
+    <!-- PASTE THE JAVASCRIPT SCRIPT BLOCK HERE -->
+    <script>
+        // JavaScript for responsive navigation
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active'); // Optional: Add a class to animate the menu icon
+        });
+
+        // Close menu when a link is clicked (for single-page navigation or if desired)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) { // Only close if mobile menu is open
+                    navLinks.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Highlight active link based on current page/section
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPath = window.location.pathname.split('/').pop(); // Get filename
+            const navLinksList = document.querySelectorAll('.nav-links a');
+
+            navLinksList.forEach(link => {
+                // For main page links (scroll to section)
+                if (link.getAttribute('href').startsWith('#')) {
+                    // You'd need more advanced JS for active states on scroll for single-page apps
+                    // For simplicity, we'll focus on external page links for now.
+                } else if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                } else if (currentPath === '' && link.getAttribute('href') === 'index.html') {
+                     // Handle root path being equivalent to index.html
+                    link.classList.add('active');
+                } else if (currentPath === 'index.html' && link.getAttribute('href') === '#hero') {
+                    link.classList.add('active'); // Set 'Home' as active on index.html
+                }
+            });
+        });
+
+    </script>
+
+</body>
+</html>

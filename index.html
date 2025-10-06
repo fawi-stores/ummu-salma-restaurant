@@ -978,3 +978,60 @@
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
                             <a href="#"><i class="
+<footer class="footer">
+            <div class="container">
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+                <p>&copy; 2023 The Paladar. All rights reserved.</p>
+            </div>
+        </footer>
+
+    <!-- PASTE THE JAVASCRIPT SCRIPT BLOCK HERE -->
+    <script>
+        // JavaScript for responsive navigation
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active'); // Optional: Add a class to animate the menu icon
+        });
+
+        // Close menu when a link is clicked (for single-page navigation or if desired)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) { // Only close if mobile menu is open
+                    navLinks.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Highlight active link based on current page/section
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPath = window.location.pathname.split('/').pop(); // Get filename
+            const navLinksList = document.querySelectorAll('.nav-links a');
+
+            navLinksList.forEach(link => {
+                // For main page links (scroll to section)
+                if (link.getAttribute('href').startsWith('#')) {
+                    // You'd need more advanced JS for active states on scroll for single-page apps
+                    // For simplicity, we'll focus on external page links for now.
+                } else if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                } else if (currentPath === '' && link.getAttribute('href') === 'index.html') {
+                     // Handle root path being equivalent to index.html
+                    link.classList.add('active');
+                } else if (currentPath === 'index.html' && link.getAttribute('href') === '#hero') {
+                    link.classList.add('active'); // Set 'Home' as active on index.html
+                }
+            });
+        });
+
+    </script>
+
+</body>
+</html>

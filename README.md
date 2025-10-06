@@ -836,7 +836,7 @@
                     <a href="#menu" class="btn">EXPLORE MENU</a>
                 </div>
                 <div class="about-image">
-                    <img src="YOUR_ABOUT_IMAGE.jpg" alt="Chef Ummu Salma preparing a dish">
+                    <img src="https://img.freepik.com/premium-photo/young-woman-cooking-kitchen-illustration-cartoon-style_890887-13406.jpg">
                 </div>
             </div>
         </section>
@@ -847,8 +847,8 @@
                 <h2>Our Delicious Menu</h2>
                 <div class="menu-tabs">
                     <button class="tab-button active" data-category="appetizers">Appetizers</button>
-                    <button class="tab-button" data-category="main-courses">Main Courses</button>
-                    <button class="tab-button" data-category="desserts">Desserts</button>
+                    <a href="main-courses.html" class="tab-button" data-category="main-courses">Main Courses</a>
+                    <a href="desserts.html" class="tab-button" data-category="desserts">Desserts</a>
                     <button class="tab-button" data-category="drinks">Drinks</button>
                 </div>
 
@@ -985,7 +985,7 @@
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                 </div>
-                <p>&copy; 2023 The Paladar. All rights reserved.</p>
+                <p>&copy; 2025 The Paladar. All rights reserved.</p>
             </div>
         </footer>
 

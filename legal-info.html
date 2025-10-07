@@ -4,159 +4,215 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legal Information - Your Business Name</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link to your main CSS file -->
+    <link rel="stylesheet" href="style.css"> <!-- Link to your main Paladar CSS file -->
     <style>
-        /* Internal CSS for this page or you can move these to style.css */
+        /*
+        *   Legal Info Page Specific Styling - Paladar Theme Adaptation
+        *   It is highly recommended to move these styles into your main style.css
+        *   and adapt them to your existing Paladar design system.
+        */
 
-        /* General Body Styling (if not already in style.css) */
+        /* --- General Body & Container --- */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif; /* Example Paladar font, adjust to your actual font-family */
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
-            color: #333;
+            background-color: #f8f8f8; /* Light background for the overall page */
+            color: #333; /* Darker text for readability */
             line-height: 1.6;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px; /* Slightly narrower for a more elegant feel */
             margin: 0 auto;
-            padding: 20px;
+            padding: 30px 20px;
         }
 
-        /* Header Styling */
+        /* --- Header --- */
         header {
-            background-color: #333;
-            color: #fff;
-            padding: 15px 0;
+            background-color: #333; /* Dark header background, common in elegant themes */
+            color: #f2f2f2; /* Light text for contrast */
+            padding: 25px 0;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15); /* More pronounced shadow */
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-family: 'Playfair Display', serif; /* Example elegant heading font */
+            font-size: 3em; /* Larger, more impactful heading */
+            letter-spacing: 2px;
+            color: #e09f3c; /* Paladar accent color for main title */
         }
 
-        /* Section Styling */
+        /* --- Section Styling --- */
         .legal-section {
-            background-color: #fff;
-            margin: 30px 0;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            text-align: center; /* Center content within sections */
+            background-color: #fff; /* White background for content blocks */
+            margin: 40px 0;
+            padding: 50px; /* More generous padding */
+            border-radius: 10px; /* Slightly more rounded corners */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Soft, elegant shadow */
+            text-align: center;
         }
 
         .legal-section h2 {
-            color: #0056b3;
-            font-size: 2em;
+            font-family: 'Playfair Display', serif; /* Consistent elegant heading font */
+            color: #b38b59; /* Paladar accent color for section titles */
+            font-size: 2.5em; /* Prominent section titles */
             margin-bottom: 30px;
             position: relative;
             display: inline-block;
+            letter-spacing: 1px;
         }
 
         .legal-section h2::after {
             content: '';
             position: absolute;
             left: 50%;
-            bottom: -10px;
+            bottom: -15px; /* Deeper line below heading */
             transform: translateX(-50%);
-            width: 80px;
+            width: 100px; /* Longer line */
             height: 3px;
-            background-color: #0056b3;
+            background-color: #e09f3c; /* Accent color for line */
             border-radius: 2px;
         }
 
-        /* Image Styling */
+        .legal-section p {
+            font-size: 1.1em;
+            color: #555; /* Slightly lighter body text for elegance */
+            max-width: 800px; /* Constrain text width for readability */
+            margin: 20px auto;
+        }
+
+        /* --- Image Gallery Styling --- */
         .image-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
-            gap: 25px;
-            margin-top: 30px;
-            justify-items: center; /* Center items horizontally in grid cells */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Larger min-width for images */
+            gap: 35px; /* More spacing between images */
+            margin-top: 40px;
+            justify-items: center;
+            align-items: center; /* Align images in the middle */
         }
 
         .image-gallery img {
             max-width: 100%;
             height: auto;
-            border-radius: 5px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease-in-out;
-            cursor: pointer; /* Indicate clickability for potential lightbox */
+            border-radius: 8px; /* Slightly more rounded image corners */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12); /* Softer image shadow */
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            cursor: pointer;
+            border: 1px solid #eee; /* Subtle border for definition */
         }
 
         .image-gallery img:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px) scale(1.02); /* More pronounced hover effect */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
         /* Specific styles for the "Promotional & Certification Overview" image */
         .promo-cert-image {
-            max-width: 800px; /* Adjust as needed */
-            margin: 30px auto; /* Center it */
+            max-width: 90%; /* Wider for this specific image */
+            margin: 40px auto;
             display: block;
         }
 
-        /* Styling for the list of specializations/documents */
+        /* --- Styling for the list of specializations/documents --- */
         .specialization-list {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px; /* Space between items */
-            margin-top: 30px;
+            gap: 25px; /* More space between items */
+            margin-top: 40px;
         }
 
         .specialization-item {
-            background-color: #f4f9ff;
+            background-color: #fdfdfd; /* Very light background for items */
             border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 15px 25px;
+            border-radius: 12px; /* Nicer rounded corners */
+            padding: 20px 30px;
             text-align: left;
             display: flex;
             align-items: center;
-            gap: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            min-width: 280px; /* Ensure items don't get too small */
+            gap: 20px; /* More space between logo and text */
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+            min-width: 300px; /* Ensure items have good minimum width */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .specialization-item:hover {
+            background-color: #fffbf5; /* Subtle hover effect */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
         }
 
         .specialization-item img {
-            width: 50px; /* Size for the logos */
-            height: 50px;
+            width: 60px; /* Slightly larger logos */
+            height: 60px;
             object-fit: contain;
-            border-radius: 50%; /* Make logos round if desired */
+            border-radius: 50%;
+            background-color: #f0f0f0; /* Light background for logos */
+            padding: 5px; /* Padding around logo */
         }
 
         .specialization-item p {
             margin: 0;
-            font-size: 1.1em;
-            font-weight: bold;
+            font-size: 1.2em; /* Larger text for clarity */
+            font-weight: 600; /* Slightly bolder */
             color: #333;
         }
 
-        /* Footer Styling */
+        /* --- Footer --- */
         footer {
-            background-color: #333;
-            color: #fff;
+            background-color: #333; /* Dark footer background */
+            color: #f2f2f2;
             text-align: center;
-            padding: 20px 0;
-            margin-top: 50px;
-            font-size: 0.9em;
+            padding: 25px 0;
+            margin-top: 60px;
+            font-size: 0.95em;
         }
 
-        /* Responsive adjustments */
+        /* --- Responsive adjustments --- */
         @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+            .legal-section {
+                padding: 30px;
+                margin: 30px 0;
+            }
+            .legal-section h2 {
+                font-size: 2em;
+                margin-bottom: 20px;
+            }
+            .legal-section h2::after {
+                bottom: -10px;
+                width: 70px;
+            }
+            .image-gallery {
+                grid-template-columns: 1fr; /* Stack images on small screens */
+                gap: 25px;
+            }
+            .specialization-item {
+                min-width: unset;
+                width: 100%;
+                padding: 15px 20px;
+                font-size: 1em;
+            }
+            .specialization-item img {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
             .legal-section {
                 padding: 20px;
             }
             .legal-section h2 {
-                font-size: 1.8em;
-            }
-            .image-gallery {
-                grid-template-columns: 1fr; /* Stack images on small screens */
-            }
-            .specialization-item {
-                min-width: unset; /* Allow smaller width on tiny screens */
-                width: 100%; /* Make items fill width on small screens */
+                font-size: 1.6em;
             }
         }
     </style>
@@ -179,10 +235,7 @@
                 <h2>Official Registrations & SCUML Certificate</h2>
                 <p>Our foundational registration with the Corporate Affairs Commission (CAC) and our SCUML certification demonstrate our compliance with regulatory bodies.</p>
                 <div class="image-gallery">
-                    <!-- Image 1: SCUML Promotional Banner with person -->
                     <img src="scuml_promo_banner.jpeg" alt="SCUML Certificate Promotion" class="promo-cert-image">
-                    
-                    <!-- Image 2: CAC Certificate of Incorporation -->
                     <img src="cac_certificate.jpeg" alt="CAC Certificate of Incorporation">
                 </div>
             </section>
@@ -191,7 +244,6 @@
                 <h2>Our Areas of Specialization & Compliance</h2>
                 <p>We are adept in navigating various regulatory landscapes and obtaining essential compliance documents across diverse sectors. Here are the key areas where our expertise shines:</p>
                 <div class="image-gallery">
-                    <!-- Image 3: Areas of Specialization (Logos) -->
                     <img src="areas_of_specialization.jpeg" alt="Areas of Specialization Logos">
                 </div>
                 <p style="margin-top: 20px; font-style: italic;">We help businesses secure vital documents and navigate compliance requirements with: Corporate Affairs Commission (CAC), Economic and Financial Crimes Commission (EFCC), Nigerian Upstream Petroleum Regulatory Commission (NUPRC), Nigerian Social Insurance Trust Fund (NSITF), Federal Inland Revenue Service (FIRS), Bureau of Public Procurement (BPP), and Pension Commission (PenCom), COREN, NipeX.</p>
@@ -201,9 +253,7 @@
                 <h2>Comprehensive Document Acquisition Services</h2>
                 <p>From initial registration to ongoing compliance, we assist our clients in acquiring a full spectrum of necessary legal documents and certifications.</p>
                 <div class="image-gallery">
-                    <!-- Image 4: Man holding stack of books with labels -->
                     <img src="documents_stack.jpeg" alt="Man holding stack of documents: CAC, FIRS, PENCOM, ITF, NSITF, BPP, Audited Account, Trademark, TIN/Tax Pro Max, SCUML">
-                    <!-- Image 5: Certificates Grid -->
                     <img src="certificates_grid.jpeg" alt="Grid of certificates: Tax Clearance, PENCOM, ITF, NSITF, Tax Pro-Max, SCUML">
                 </div>
             </section>
@@ -212,7 +262,6 @@
                 <h2>Key Certifications We Facilitate</h2>
                 <p>We simplify the process of obtaining these crucial certificates, ensuring your business remains compliant and credible.</p>
                 <div class="specialization-list">
-                    <!-- Image 6 (parsed into individual items): List of logos and text -->
                     <div class="specialization-item">
                         <img src="cac_logo_icon.png" alt="CAC Logo"> <p>CAC DOCUMENTS</p>
                     </div>
@@ -229,7 +278,7 @@
                         <img src="nsitf_logo_icon.png" alt="NSITF Logo"> <p>NSITF CERTIFICATE</p>
                     </div>
                     <div class="specialization-item">
-                        <img src="bpp_logo_icon.png" alt="BPP Logo"> <p>BPP CERTIFICATE</p>
+                        <img src="bpp_logo_icon.png" alt="BPP CERTIFICATE"> <p>BPP CERTIFICATE</p>
                     </div>
                 </div>
                 <p style="margin-top: 30px;">This comprehensive suite of documents ensures your business is fully compliant with all relevant Nigerian regulations.</p>

@@ -3,137 +3,562 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Your Restaurant</title>
+    <title>The Paladar - Contact Us</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* General Styles */
+        :root {
+            --primary-color: #A0522D; /* Sienna */
+            --secondary-color: #FDF5E6; /* Old Lace */
+            --dark-color: #2c3e50; /* Darker Slate */
+            --light-color: #ecf0f1; /* Light Gray */
+            --text-color: #333;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Open Sans', sans-serif;
+            --font-accent: 'Great Vibes', cursive;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+        }
+
+        body {
+            font-family: var(--font-body);
             line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+            overflow-x: hidden;
         }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px 0;
-        }
-        header {
-            background: #333;
-            color: #fff;
-            padding-top: 20px;
-            min-height: 70px;
-            border-bottom: #77aaff 3px solid;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        .main-content {
-            padding: 20px;
-            background: #fff;
-            margin-top: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .contact-info {
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        .contact-info p {
-            font-size: 1.1em;
-            margin: 10px 0;
-        }
-        .contact-info a {
-            color: #007bff;
+
+        a {
             text-decoration: none;
+            color: var(--primary-color);
         }
-        .contact-info a:hover {
-            text-decoration: underline;
+
+        ul {
+            list-style: none;
         }
-        .contact-form label {
-            display: block;
-            margin-bottom: 8px;
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header & Navigation */
+        .navbar {
+            background: var(--dark-color);
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .navbar .logo {
+            font-family: var(--font-accent);
+            font-size: 2.5rem;
+            color: var(--secondary-color);
             font-weight: bold;
         }
+
+        .navbar .logo a {
+            color: var(--secondary-color);
+        }
+
+        .navbar .nav-links {
+            display: flex;
+        }
+
+        .navbar .nav-links li {
+            margin-left: 30px;
+        }
+
+        .navbar .nav-links a {
+            color: var(--light-color);
+            font-weight: 600;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .navbar .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover::after,
+        .navbar .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .navbar .nav-links a:hover,
+        .navbar .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-color);
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/1600x600/A0522D/2c3e50?text=Contact+The+Paladar') center center/cover no-repeat;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-accent);
+            font-size: 4rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--light-color);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 60px 0;
+            background-color: var(--secondary-color);
+        }
+
+        .contact-section h2 {
+            text-align: center;
+            font-size: 3rem;
+            color: var(--dark-color);
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .contact-section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .contact-info-block {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-info-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .contact-info-block i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .contact-info-block h3 {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .contact-info-block p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+
+        .contact-info-block a {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        .contact-info-block a:hover {
+            color: #8B4513; /* Darker Sienna */
+        }
+
+        /* Contact Form */
+        .contact-form-section {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 60px;
+        }
+
+        .contact-form-section .container {
+            max-width: 700px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .contact-form-section h2 {
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+
+        .contact-form label {
+            display: block;
+            text-align: left;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
         .contact-form input[type="text"],
         .contact-form input[type="email"],
         .contact-form textarea {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-color);
+            border-radius: 5px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-color);
+            background-color: #f8f8f8;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(160, 82, 45, 0.2);
+            outline: none;
+        }
+
         .contact-form textarea {
             resize: vertical;
             min-height: 120px;
         }
+
         .contact-form button {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background: #333;
+            display: inline-block;
+            background-color: var(--primary-color);
             color: #fff;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            padding: 15px 30px;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 1.1em;
-        }
-        .contact-form button:hover {
-            background: #555;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #333;
-            color: #fff;
+            transition: background-color 0.3s ease, transform 0.2s ease;
             margin-top: 20px;
-            border-top: #77aaff 3px solid;
+        }
+
+        .contact-form button:hover {
+            background-color: #8B4513; /* Darker Sienna */
+            transform: translateY(-2px);
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 0 0 60px 0;
+        }
+
+        .map-section .container {
+            padding: 0 20px;
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+
+        /* Footer */
+        .footer {
+            background: var(--dark-color);
+            color: var(--light-color);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer .social-icons a {
+            color: var(--light-color);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer p {
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: var(--dark-color);
+                position: absolute;
+                top: 70px; /* Adjust based on navbar height */
+                left: 0;
+                padding: 1rem 0;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            }
+
+            .navbar .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .nav-links li {
+                margin: 10px 20px;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .contact-section h2,
+            .contact-form-section h2 {
+                font-size: 2.5rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info-block {
+                padding: 20px;
+            }
+
+            .contact-form-section .container {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
+    <header class="navbar">
         <div class="container">
-            <h1>Contact Us</h1>
+            <h1 class="logo"><a href="index.html">The Paladar</a></h1>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <nav class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#menu">Menu</a></li>
+                <li><a href="main-courses.html">Main Courses</a></li>
+                <li><a href="desserts.html">Desserts</a></li>
+                <li><a href="drinks.html">Drinks</a></li>
+                <li><a href="#" class="active">Contact</a></li> <!-- Current page active -->
+                <li><a href="reservations.html">Reservations</a></li>
+            </nav>
         </div>
     </header>
 
-    <div class="container">
-        <div class="main-content">
-            <div class="contact-info">
-                <p>Have questions, feedback, or want to say hello?</p>
-                <p>Reach out to us using the information below or fill out the contact form!</p>
-                <p>Call us on: <a href="tel:+1234567890">**YOUR PHONE NUMBER HERE**</a></p>
-                <p>Email us at: <a href="mailto:info@yourrestaurant.com">info@yourrestaurant.com</a></p>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Get in Touch with The Paladar</h1>
+                <p>We'd love to hear from you! Reach out for inquiries, feedback, or special event planning.</p>
             </div>
+        </section>
 
-            <div class="contact-form">
-                <form action="#" method="POST"> <!-- The 'action' attribute would point to a server-side script to handle form submission -->
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
+        <section id="contact-info" class="contact-section">
+            <div class="container">
+                <h2>Our Details</h2>
+                <div class="contact-grid">
+                    <div class="contact-info-block">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Call Us</h3>
+                        <p>Have a question or need to adjust your reservation?</p>
+                        <a href="tel:YOUR_PHONE_NUMBER_HERE">YOUR_PHONE_NUMBER_HERE</a> <!-- REPLACE THIS -->
+                    </div>
+                    <div class="contact-info-block">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Us</h3>
+                        <p>For general inquiries or feedback.</p>
+                        <a href="mailto:YOUR_EMAIL_HERE">YOUR_EMAIL_HERE</a> <!-- REPLACE THIS -->
+                    </div>
+                    <div class="contact-info-block">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Visit Us</h3>
+                        <p>123 Restaurant Avenue, Culinary City, 54321</p>
+                        <a href="https://maps.app.goo.gl/YourGoogleMapsLink" target="_blank">Get Directions</a> <!-- REPLACE WITH YOUR ACTUAL GOOGLE MAPS LINK -->
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-
-                    <label for="subject">Subject:</label>
-                    <input type="text" id="subject" name="subject">
-
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" required></textarea>
-
+        <section id="contact-form" class="contact-form-section">
+            <div class="container">
+                <h2>Send Us a Message</h2>
+                <form action="#" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="contact-name">Full Name:</label>
+                        <input type="text" id="contact-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email:</label>
+                        <input type="email" id="contact-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-subject">Subject:</label>
+                        <input type="text" id="contact-subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Your Message:</label>
+                        <textarea id="contact-message" name="message" rows="6" required></textarea>
+                    </div>
                     <button type="submit">Send Message</button>
                 </form>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <footer>
-        <p>Your Restaurant &copy; 2023</p>
+        <section id="location-map" class="map-section">
+            <div class="container">
+                <h2>Find Us Here</h2>
+                <div class="map-container">
+                    <!-- Replace the src below with your actual Google Maps embed code -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12345.67890!2d-74.0060!3d40.7128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDQ5JzIyLjQiTiA3NMKwMDAnMzYuMCJX!5e0!3m2!1sen!2sus!4v1678888888888!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2023 The Paladar. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script>
+        // JavaScript for responsive navigation
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active'); // Optional: Add a class to animate the menu icon
+        });
+
+        // Close menu when a link is clicked (for single-page navigation or if desired)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Highlight active link based on current page/section
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPath = window.location.pathname.split('/').pop(); // Get filename
+            const navLinksList = document.querySelectorAll('.nav-links a');
+
+            navLinksList.forEach(link => {
+                if (link.getAttribute('href').startsWith('#')) {
+                    // This specific page only has external links in its nav
+                } else if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

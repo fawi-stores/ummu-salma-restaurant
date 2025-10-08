@@ -5,224 +5,266 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legal Information - Paladar Restaurant</title>
     <link rel="stylesheet" href="style.css"> <!-- Link to your main Paladar style.css file -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- It's crucial that the above link points to the CSS file containing the :root variables you provided -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         /*
         *   Legal Info Page Specific Styling - Paladar Restaurant Theme
-        *   Please move these styles into your main style.css file.
-        *   Adjust font-families and colors if your Paladar theme uses slightly different values.
+        *   *** MOVE THESE STYLES TO YOUR MAIN style.css FILE! ***
+        *   These styles are designed to directly use the CSS variables defined in your provided theme.
         */
 
-        /* --- General Body & Container (ensure consistency with existing Paladar) --- */
+        /* General Body & Container - Overrides specific to this page if needed, otherwise rely on main CSS */
         body {
-            font-family: 'Montserrat', sans-serif; /* Primary font for Paladar */
+            background-color: var(--secondary-color); /* Matches theme body background */
+            color: var(--text-color); /* Matches theme text color */
+            font-family: var(--font-body); /* Matches theme body font */
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8; /* Light background for content sections */
-            color: #333; /* Standard text color */
-            line-height: 1.6;
         }
 
         .container {
-            max-width: 1000px; /* Consistent container width */
+            max-width: 1200px; /* Matches theme container width */
             margin: 0 auto;
-            padding: 30px 20px;
+            padding: 0 20px; /* Matches theme container padding */
         }
 
-        /* --- Header (consistent with Paladar's header) --- */
-        header {
-            background-color: #333; /* Dark header background */
-            color: #f2f2f2; /* Light text */
-            padding: 20px 0; /* Consistent header padding */
+        /* --- Header (using .header class from your theme) --- */
+        /* Note: For simplicity, I'm setting a fixed header below. If your main header.html is included,
+                 you'd just ensure it's structured to use the .header class. For a standalone legal-info.html,
+                 this ensures it looks correct. */
+        .page-header { /* Renamed to avoid conflict if you include a global .header */
+            background-color: var(--dark-color);
+            color: #fff;
+            padding: 20px 0;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 50px; /* Add space below the header */
         }
 
-        header h1 {
-            margin: 0;
-            font-family: 'Playfair Display', serif; /* Heading font for Paladar */
-            font-size: 2.8em; /* Appropriate size */
-            letter-spacing: 1px;
-            color: #ff6600; /* Paladar primary accent color */
+        .page-header h1 {
+            font-family: var(--font-accent); /* Using accent font for page title */
+            font-size: 3.5rem; /* Slightly larger for main page title */
+            margin-bottom: 0;
+            color: var(--primary-color);
+            font-weight: normal;
         }
 
-        /* --- Section Styling (adapted for Paladar) --- */
+        /* --- Section Styling --- */
         .legal-section {
-            background-color: #fff; /* White background for content blocks */
-            margin: 30px 0; /* Standard section margin */
-            padding: 40px; /* Generous padding */
-            border-radius: 8px; /* Slightly rounded corners */
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08); /* Soft shadow */
+            background-color: var(--light-color); /* Using theme's light color for sections */
+            margin: 40px auto; /* Centered with vertical margin */
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             text-align: center;
+            max-width: 1000px; /* Constrain section width slightly */
         }
 
         .legal-section h2 {
-            font-family: 'Playfair Display', serif; /* Heading font */
-            color: #ff6600; /* Paladar primary accent color for section titles */
-            font-size: 2.2em;
-            margin-bottom: 25px;
+            font-family: var(--font-heading); /* Matches theme heading font */
+            color: var(--dark-color); /* Matches theme heading color */
+            font-size: 2.5rem; /* Matches theme h2 size */
+            margin-bottom: 50px; /* Matches theme h2 margin */
             position: relative;
-            display: inline-block;
-            letter-spacing: 0.5px;
+            padding-bottom: 15px; /* Matches theme h2 padding */
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .legal-section h2::after {
             content: '';
             position: absolute;
             left: 50%;
-            bottom: -10px; /* Underline effect */
+            bottom: 0;
             transform: translateX(-50%);
-            width: 70px; /* Accent line length */
+            width: 60px; /* Matches theme h2 line width */
             height: 3px;
-            background-color: #ff6600; /* Paladar accent color for line */
-            border-radius: 2px;
+            background-color: var(--primary-color); /* Matches theme h2 line color */
+            border-radius: 5px;
         }
 
         .legal-section p {
-            font-size: 1.05em;
-            color: #555; /* Slightly muted text for paragraphs */
-            max-width: 750px; /* Constrain text width for readability */
-            margin: 15px auto;
+            font-size: 1.05rem;
+            color: var(--text-color); /* Matches theme paragraph text color */
+            max-width: 800px; /* Readable text width */
+            margin: 0 auto 20px auto; /* Center paragraphs, match spacing */
         }
 
-        /* --- Image Gallery Styling (adapted for Paladar) --- */
+        /* --- Image Gallery Styling --- */
         .image-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
-            gap: 25px; /* Spacing between images */
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; /* Consistent gap */
+            margin-top: 40px;
             justify-items: center;
-            align-items: center;
+            align-items: flex-start; /* Align images to top of their cell */
         }
 
         .image-gallery img {
             max-width: 100%;
             height: auto;
-            border-radius: 6px; /* Gentle rounded corners */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Subtle image shadow */
-            transition: transform 0.3s ease-in-out;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
             cursor: pointer;
-            border: 1px solid #eee; /* Light border for definition */
+            border: 2px solid var(--primary-color); /* Border using primary color */
         }
 
         .image-gallery img:hover {
-            transform: translateY(-5px) scale(1.02); /* Consistent hover effect */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
         /* Specific styles for the "Promotional & Certification Overview" image */
         .promo-cert-image {
-            max-width: 85%; /* Wider for this specific image */
-            margin: 30px auto;
+            max-width: 90%; /* Wider for this specific image */
+            margin: 40px auto;
             display: block;
         }
 
-        /* --- Styling for the list of specializations/documents (adapted for Paladar) --- */
+        /* --- Styling for the list of specializations/documents --- */
         .specialization-list {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px; /* Space between items */
-            margin-top: 30px;
+            gap: 25px;
+            margin-top: 40px;
         }
 
         .specialization-item {
-            background-color: #fdfdfd; /* Very light background for items */
-            border: 1px solid #eee; /* Light border */
-            border-radius: 10px; /* Rounded corners */
-            padding: 18px 25px;
+            background-color: #fff; /* White background for definition */
+            border: 1px solid var(--light-color); /* Subtle border */
+            border-radius: 10px;
+            padding: 20px 30px;
             text-align: left;
             display: flex;
             align-items: center;
-            gap: 18px; /* Space between logo and text */
-            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-            min-width: 280px;
+            gap: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            min-width: 300px;
             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .specialization-item:hover {
-            background-color: #fff; /* Slightly brighter on hover */
+            background-color: var(--light-color); /* Hover using theme light color */
             transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
         }
 
         .specialization-item img {
-            width: 55px; /* Size for logos */
-            height: 55px;
+            width: 60px;
+            height: 60px;
             object-fit: contain;
-            border-radius: 50%; /* Round logos */
-            background-color: #fff; /* Ensure logos have a clear background */
-            padding: 3px; /* Small padding */
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08); /* Very subtle shadow for logos */
+            border-radius: 50%;
+            background-color: var(--secondary-color); /* Using theme secondary color as background for logos */
+            padding: 5px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
         }
 
         .specialization-item p {
             margin: 0;
-            font-size: 1.1em;
+            font-size: 1.15rem; /* Adjusted for clarity */
             font-weight: 600;
-            color: #333;
+            color: var(--dark-color); /* Using dark color for item text */
         }
 
-        /* --- Footer (consistent with Paladar's footer) --- */
-        footer {
-            background-color: #333; /* Dark footer background */
-            color: #f2f2f2;
+        /* --- Footer (using .footer class from your theme) --- */
+        .page-footer { /* Renamed to avoid conflict if you include a global .footer */
+            background-color: var(--dark-color);
+            color: var(--light-color);
             text-align: center;
-            padding: 20px 0;
-            margin-top: 50px;
-            font-size: 0.9em;
+            padding: 30px 0;
+            margin-top: 60px; /* More space above footer */
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* --- Responsive adjustments (ensure consistency with Paladar's media queries) --- */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.2em;
+        .page-footer p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Responsive Design - Adapted from your theme's media queries */
+        @media (max-width: 992px) {
+            .page-header h1 {
+                font-size: 3rem;
             }
             .legal-section {
-                padding: 25px;
-                margin: 25px 0;
+                padding: 40px;
+                max-width: 90%; /* Allow sections to be wider on medium screens */
+            }
+            .image-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            .legal-section {
+                padding: 30px;
+                margin: 30px auto;
             }
             .legal-section h2 {
-                font-size: 1.8em;
-                margin-bottom: 20px;
+                font-size: 2rem;
+                margin-bottom: 30px;
             }
             .legal-section h2::after {
-                bottom: -8px;
-                width: 60px;
+                width: 50px;
             }
             .image-gallery {
                 grid-template-columns: 1fr; /* Stack images on small screens */
-                gap: 20px;
+                gap: 25px;
             }
             .specialization-item {
                 min-width: unset;
                 width: 100%;
                 padding: 15px 20px;
-                font-size: 1em;
+                font-size: 1rem;
+                flex-direction: column; /* Stack logo and text on tiny screens */
+                text-align: center;
+                gap: 10px;
+            }
+            .specialization-item p {
+                font-size: 1.05rem;
             }
             .specialization-item img {
-                width: 45px;
-                height: 45px;
+                width: 50px;
+                height: 50px;
             }
         }
 
         @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.8em;
+            .page-header h1 {
+                font-size: 2rem;
             }
             .legal-section {
-                padding: 15px;
+                padding: 20px;
+                margin: 20px auto;
             }
             .legal-section h2 {
-                font-size: 1.5em;
+                font-size: 1.8rem;
+                margin-bottom: 25px;
+            }
+            .legal-section h2::after {
+                width: 40px;
+            }
+            .legal-section p {
+                font-size: 0.95rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Legal Information & Certifications</h1>
+    <!-- Replaced generic <header> with .page-header to distinguish from a potential site-wide header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Legal Information & Certifications</h1>
+        </div>
     </header>
 
     <main>
@@ -289,9 +331,15 @@
         </div>
     </main>
 
-    <footer>
-        <p>&copy; 2023 Your Business Name. All rights reserved.</p>
+    <!-- Replaced generic <footer> with .page-footer to distinguish -->
+    <footer class="page-footer">
+        <div class="container">
+            <p>&copy; 2023 Your Business Name. All rights reserved.</p>
+        </div>
     </footer>
+
+</body>
+</html>
 
 </body>
 </html>

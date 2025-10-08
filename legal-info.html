@@ -107,7 +107,8 @@
         }
 
         /* Header */
-        .header {
+        /* Changed from .header to .navbar to match HTML */
+        .navbar {
             background-color: var(--dark-color);
             color: #fff;
             padding: 20px 0;
@@ -118,7 +119,7 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .header .container {
+        .navbar .container { /* Changed from .header .container */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -132,7 +133,7 @@
         }
 
         .main-nav ul {
-            display: flex;
+            display: flex; /* Ensure it's flex by default for desktop */
         }
 
         .main-nav ul li {
@@ -325,6 +326,7 @@
             border-radius: 8px;
             height: 200px;
             display: flex;
+            flex-direction: column; /* Changed to column to stack image and text */
             align-items: center;
             justify-content: center;
             color: var(--primary-color);
@@ -333,17 +335,19 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            padding: 10px; /* Added padding */
         }
 
         .image-slot img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            max-width: 80%; /* Adjusted for better fit */
+            max-height: 80%; /* Adjusted for better fit */
+            object-fit: contain; /* Changed to contain to show full image */
+            position: static; /* No longer absolute */
+            top: auto;
+            left: auto;
+            opacity: 1; /* Always visible if present */
+            transition: none; /* No transition needed here */
+            margin-bottom: 10px; /* Space between image and text */
         }
 
         .image-slot img.loaded {
@@ -355,19 +359,54 @@
             background-color: rgba(160, 82, 45, 0.1);
         }
 
+        /* Menu Toggle (Hamburger icon) */
+        .menu-toggle {
+            display: none; /* Hidden on desktop */
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 21px; /* 3 bars of 3px + 2 spaces of 6px */
+            cursor: pointer;
+            position: relative; /* Added for correct positioning on small screens */
+            z-index: 1001; /* Ensure it's above other content */
+        }
+
+        .menu-toggle .bar {
+            width: 100%;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Animation for hamburger to close icon */
+        .menu-toggle.active .bar:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .menu-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active .bar:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
         /* Existing responsive styles from index.html */
         @media (max-width: 992px) {
             .main-nav ul {
-                display: none;
+                display: none; /* Hide by default on mobile */
+                flex-direction: column; /* Keep flex-direction for active state */
             }
 
-            .header .container {
-                flex-direction: column;
-                text-align: center;
+            .navbar .container { /* Changed from .header .container */
+                flex-direction: row; /* Keep logo and toggle on one line */
+                justify-content: space-between;
+                align-items: center;
             }
 
             .logo {
-                margin-bottom: 15px;
+                margin-bottom: 0; /* No margin on smaller screens */
             }
 
             .hero h1 {
@@ -379,22 +418,22 @@
             }
 
             .menu-toggle {
-                display: block;
+                display: flex; /* Show hamburger on mobile */
                 color: #fff;
                 font-size: 2rem;
                 cursor: pointer;
-                position: absolute;
+                /* position: absolute; remove absolute, handled by flex container */
                 right: 20px;
                 top: 25px;
             }
 
             .main-nav.active ul {
-                display: flex;
+                display: flex; /* Show menu when active */
                 flex-direction: column;
                 background-color: var(--dark-color);
                 width: 100%;
                 position: absolute;
-                top: 75px;
+                top: 75px; /* Adjust based on header height */
                 left: 0;
                 padding: 10px 0;
                 box-shadow: 0 5px 10px rgba(0,0,0,0.2);
@@ -423,12 +462,15 @@
                 padding: 0;
                 opacity: 1;
                 transform: translateY(0);
+                /* Ensure it's hidden when dropdown is not hovered/active */
                 display: none;
             }
-
-            .dropdown:hover .dropdown-content {
+             /* Show dropdown content when parent dropdown is active/hovered */
+            .dropdown.active .dropdown-content,
+            .dropdown:hover .dropdown-content { /* Keep hover for desktop if still applies */
                 display: block;
             }
+
 
             .dropdown-content a {
                 padding-left: 40px;
@@ -549,29 +591,33 @@
                 <div class="legal-section">
                     <h3>CAC (Common Access Card) Information Integration</h3>
                     <p>Taste Of Ummi values secure and streamlined access for our military and government patrons. We are implementing features to support CAC authentication for certain services.</p>
-                    <p>This integration aims to provide enhanced security and convenience for authorized users. Below are some visual examples related to CAC usage and security protocols.
-                        </p>
+                    <p>This integration aims to provide enhanced security and convenience for authorized users. Below are some visual examples related to CAC usage and security protocols.</p>
                     <div class="image-grid">
-    <div class="specialization-list">
-                    <div class="specialization-item">
-                        <img src="cac_logo_icon.png" alt="CAC Logo"> <p>CAC DOCUMENTS</p>
+                        <div class="image-slot">
+                            <img src="https://source.unsplash.com/200x200/?cac-card,identity" alt="CAC Logo">
+                            <p>CAC DOCUMENTS</p>
+                        </div>
+                        <div class="image-slot">
+                            <img src="https://source.unsplash.com/200x200/?certificate,award" alt="PenCom Logo">
+                            <p>PENCOM CERTIFICATE</p>
+                        </div>
+                        <div class="image-slot">
+                            <img src="https://source.unsplash.com/200x200/?tax-document,invoice" alt="FIRS Logo">
+                            <p>TAX CLEARANCE</p>
+                        </div>
+                        <div class="image-slot">
+                            <img src="https://source.unsplash.com/200x200/?itf-logo,training" alt="ITF Logo">
+                            <p>ITF CERTIFICATE</p>
+                        </div>
+                        <div class="image-slot">
+                            <img src="https://source.unsplash.com/200x200/?nsitf-logo,insurance" alt="NSITF Logo">
+                            <p>NSITF CERTIFICATE</p>
+                        </div>
+                        <div class="image-slot">
+                            <img src="https://source.unsplash.com/200x200/?bpp-logo,certification" alt="BPP CERTIFICATE">
+                            <p>BPP CERTIFICATE</p>
+                        </div>
                     </div>
-                    <div class="specialization-item">
-                        <img src="pencom_logo_icon.png" alt="PenCom Logo"> <p>PENCOM CERTIFICATE</p>
-                    </div>
-                    <div class="specialization-item">
-                        <img src="firs_logo_icon.png" alt="FIRS Logo"> <p>TAX CLEARANCE</p>
-                    </div>
-                    <div class="specialization-item">
-                        <img src="itf_logo_icon.png" alt="ITF Logo"> <p>ITF CERTIFICATE</p>
-                    </div>
-                    <div class="specialization-item">
-                        <img src="nsitf_logo_icon.png" alt="NSITF Logo"> <p>NSITF CERTIFICATE</p>
-                    </div>
-                    <div class="specialization-item">
-                        <img src="bpp_logo_icon.png" alt="BPP CERTIFICATE"> <p>BPP CERTIFICATE</p>
-                    </div>
-</div>
                     <p>We are committed to adhering to all relevant government regulations and security standards concerning CAC integration. Further information on specific functionalities and security measures will be provided as these features roll out.</p>
                 </div>
 
@@ -600,17 +646,34 @@
         // JavaScript for responsive navigation (copied from index.html)
         const mobileMenu = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
+        const dropdowns = document.querySelectorAll('.dropdown');
 
         mobileMenu.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            mobileMenu.classList.toggle('active'); // Optional: Add a class to animate the menu icon
+            mobileMenu.classList.toggle('active');
         });
 
+        // Close mobile menu when a link is clicked
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
+                // Check if the clicked link is not part of a dropdown parent
+                if (!link.closest('.dropdown')) {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenu.classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        // Handle dropdowns for mobile (toggle on click)
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('click', function(event) {
+                // Only toggle if in mobile view (navLinks is active)
                 if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    mobileMenu.classList.remove('active');
+                    this.classList.toggle('active');
+                    // Prevent immediate closing of the main menu if a dropdown is clicked
+                    event.stopPropagation();
                 }
             });
         });

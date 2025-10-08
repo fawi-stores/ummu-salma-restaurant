@@ -3,194 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal Information - Your Business Name</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link to your main Paladar CSS file -->
+    <title>Legal Information - Paladar Restaurant</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your main Paladar style.css file -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         /*
-        *   Legal Info Page Specific Styling - Paladar Theme Adaptation
-        *   It is highly recommended to move these styles into your main style.css
-        *   and adapt them to your existing Paladar design system.
+        *   Legal Info Page Specific Styling - Paladar Restaurant Theme
+        *   Please move these styles into your main style.css file.
+        *   Adjust font-families and colors if your Paladar theme uses slightly different values.
         */
 
-        /* --- General Body & Container --- */
+        /* --- General Body & Container (ensure consistency with existing Paladar) --- */
         body {
-            font-family: 'Montserrat', sans-serif; /* Example Paladar font, adjust to your actual font-family */
+            font-family: 'Montserrat', sans-serif; /* Primary font for Paladar */
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8; /* Light background for the overall page */
-            color: #333; /* Darker text for readability */
+            background-color: #f8f8f8; /* Light background for content sections */
+            color: #333; /* Standard text color */
             line-height: 1.6;
         }
 
         .container {
-            max-width: 1000px; /* Slightly narrower for a more elegant feel */
+            max-width: 1000px; /* Consistent container width */
             margin: 0 auto;
             padding: 30px 20px;
         }
 
-        /* --- Header --- */
+        /* --- Header (consistent with Paladar's header) --- */
         header {
-            background-color: #333; /* Dark header background, common in elegant themes */
-            color: #f2f2f2; /* Light text for contrast */
-            padding: 25px 0;
+            background-color: #333; /* Dark header background */
+            color: #f2f2f2; /* Light text */
+            padding: 20px 0; /* Consistent header padding */
             text-align: center;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.15); /* More pronounced shadow */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
         }
 
         header h1 {
             margin: 0;
-            font-family: 'Playfair Display', serif; /* Example elegant heading font */
-            font-size: 3em; /* Larger, more impactful heading */
-            letter-spacing: 2px;
-            color: #e09f3c; /* Paladar accent color for main title */
+            font-family: 'Playfair Display', serif; /* Heading font for Paladar */
+            font-size: 2.8em; /* Appropriate size */
+            letter-spacing: 1px;
+            color: #ff6600; /* Paladar primary accent color */
         }
 
-        /* --- Section Styling --- */
+        /* --- Section Styling (adapted for Paladar) --- */
         .legal-section {
             background-color: #fff; /* White background for content blocks */
-            margin: 40px 0;
-            padding: 50px; /* More generous padding */
-            border-radius: 10px; /* Slightly more rounded corners */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Soft, elegant shadow */
+            margin: 30px 0; /* Standard section margin */
+            padding: 40px; /* Generous padding */
+            border-radius: 8px; /* Slightly rounded corners */
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08); /* Soft shadow */
             text-align: center;
         }
 
         .legal-section h2 {
-            font-family: 'Playfair Display', serif; /* Consistent elegant heading font */
-            color: #b38b59; /* Paladar accent color for section titles */
-            font-size: 2.5em; /* Prominent section titles */
-            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif; /* Heading font */
+            color: #ff6600; /* Paladar primary accent color for section titles */
+            font-size: 2.2em;
+            margin-bottom: 25px;
             position: relative;
             display: inline-block;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .legal-section h2::after {
             content: '';
             position: absolute;
             left: 50%;
-            bottom: -15px; /* Deeper line below heading */
+            bottom: -10px; /* Underline effect */
             transform: translateX(-50%);
-            width: 100px; /* Longer line */
+            width: 70px; /* Accent line length */
             height: 3px;
-            background-color: #e09f3c; /* Accent color for line */
+            background-color: #ff6600; /* Paladar accent color for line */
             border-radius: 2px;
         }
 
         .legal-section p {
-            font-size: 1.1em;
-            color: #555; /* Slightly lighter body text for elegance */
-            max-width: 800px; /* Constrain text width for readability */
-            margin: 20px auto;
+            font-size: 1.05em;
+            color: #555; /* Slightly muted text for paragraphs */
+            max-width: 750px; /* Constrain text width for readability */
+            margin: 15px auto;
         }
 
-        /* --- Image Gallery Styling --- */
+        /* --- Image Gallery Styling (adapted for Paladar) --- */
         .image-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Larger min-width for images */
-            gap: 35px; /* More spacing between images */
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+            gap: 25px; /* Spacing between images */
+            margin-top: 30px;
             justify-items: center;
-            align-items: center; /* Align images in the middle */
+            align-items: center;
         }
 
         .image-gallery img {
             max-width: 100%;
             height: auto;
-            border-radius: 8px; /* Slightly more rounded image corners */
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12); /* Softer image shadow */
-            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            border-radius: 6px; /* Gentle rounded corners */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Subtle image shadow */
+            transition: transform 0.3s ease-in-out;
             cursor: pointer;
-            border: 1px solid #eee; /* Subtle border for definition */
+            border: 1px solid #eee; /* Light border for definition */
         }
 
         .image-gallery img:hover {
-            transform: translateY(-8px) scale(1.02); /* More pronounced hover effect */
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transform: translateY(-5px) scale(1.02); /* Consistent hover effect */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
 
         /* Specific styles for the "Promotional & Certification Overview" image */
         .promo-cert-image {
-            max-width: 90%; /* Wider for this specific image */
-            margin: 40px auto;
+            max-width: 85%; /* Wider for this specific image */
+            margin: 30px auto;
             display: block;
         }
 
-        /* --- Styling for the list of specializations/documents --- */
+        /* --- Styling for the list of specializations/documents (adapted for Paladar) --- */
         .specialization-list {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 25px; /* More space between items */
-            margin-top: 40px;
+            gap: 20px; /* Space between items */
+            margin-top: 30px;
         }
 
         .specialization-item {
             background-color: #fdfdfd; /* Very light background for items */
-            border: 1px solid #e0e0e0;
-            border-radius: 12px; /* Nicer rounded corners */
-            padding: 20px 30px;
+            border: 1px solid #eee; /* Light border */
+            border-radius: 10px; /* Rounded corners */
+            padding: 18px 25px;
             text-align: left;
             display: flex;
             align-items: center;
-            gap: 20px; /* More space between logo and text */
-            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
-            min-width: 300px; /* Ensure items have good minimum width */
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            gap: 18px; /* Space between logo and text */
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            min-width: 280px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .specialization-item:hover {
-            background-color: #fffbf5; /* Subtle hover effect */
+            background-color: #fff; /* Slightly brighter on hover */
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .specialization-item img {
-            width: 60px; /* Slightly larger logos */
-            height: 60px;
+            width: 55px; /* Size for logos */
+            height: 55px;
             object-fit: contain;
-            border-radius: 50%;
-            background-color: #f0f0f0; /* Light background for logos */
-            padding: 5px; /* Padding around logo */
+            border-radius: 50%; /* Round logos */
+            background-color: #fff; /* Ensure logos have a clear background */
+            padding: 3px; /* Small padding */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08); /* Very subtle shadow for logos */
         }
 
         .specialization-item p {
             margin: 0;
-            font-size: 1.2em; /* Larger text for clarity */
-            font-weight: 600; /* Slightly bolder */
+            font-size: 1.1em;
+            font-weight: 600;
             color: #333;
         }
 
-        /* --- Footer --- */
+        /* --- Footer (consistent with Paladar's footer) --- */
         footer {
             background-color: #333; /* Dark footer background */
             color: #f2f2f2;
             text-align: center;
-            padding: 25px 0;
-            margin-top: 60px;
-            font-size: 0.95em;
+            padding: 20px 0;
+            margin-top: 50px;
+            font-size: 0.9em;
         }
 
-        /* --- Responsive adjustments --- */
+        /* --- Responsive adjustments (ensure consistency with Paladar's media queries) --- */
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2.2em;
             }
             .legal-section {
-                padding: 30px;
-                margin: 30px 0;
+                padding: 25px;
+                margin: 25px 0;
             }
             .legal-section h2 {
-                font-size: 2em;
+                font-size: 1.8em;
                 margin-bottom: 20px;
             }
             .legal-section h2::after {
-                bottom: -10px;
-                width: 70px;
+                bottom: -8px;
+                width: 60px;
             }
             .image-gallery {
                 grid-template-columns: 1fr; /* Stack images on small screens */
-                gap: 25px;
+                gap: 20px;
             }
             .specialization-item {
                 min-width: unset;
@@ -209,10 +211,10 @@
                 font-size: 1.8em;
             }
             .legal-section {
-                padding: 20px;
+                padding: 15px;
             }
             .legal-section h2 {
-                font-size: 1.6em;
+                font-size: 1.5em;
             }
         }
     </style>
